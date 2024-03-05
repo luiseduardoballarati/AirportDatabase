@@ -1,0 +1,40 @@
+<html>
+  <body>
+    <a href="/flights/create">Create a new flight</a><br>
+    <a href="/menu/menu">return to menu</a><br>
+    <a href="/flightDetails/list">check pilots per flight (Flight Details)</a>
+<br>
+    <table>
+      <thead>
+        <tr>
+          <th>Flight ID</th>
+          <th>Aircraft ID</th>
+          <th>Route ID</th>
+          <th>Departure Date</th>
+          <th>Departure Time</th>
+          <th>Arrival Date</th>
+          <th>Arrival Time</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for flight in flights %}
+        <tr>
+          <td>{{ flight.flight_id }}</td>
+          <td>{{ flight.aircraft_id }}</td>
+          <td>{{ flight.route_id }}</td>
+          <td>{{ flight.departure_date }}</td>
+          <td>{{ flight.departure_time }}</td>
+          <td>{{ flight.arrival_date }}</td>
+          <td>{{ flight.arrival_time }}</td>
+          <td>
+            <a href="/flights/update/{{ flight.flight_id }}">edit and/or add pilots to this flight</a>
+            <a href="/flights/delete/{{ flight.flight_id }}">delete</a>
+            <a href="/flights/pilots_assigned/{{ flight.flight_id }}">check pilots assigned to this flight</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>
